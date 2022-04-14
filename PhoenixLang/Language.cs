@@ -4,17 +4,21 @@ using static PhoenixLang.Methods;
 namespace PhoenixLang;
 public class Language
 {
-    private XmlDocument document;
+    private XmlDocument _document;
     public Language(string fileName)
     {
-        document = new XmlDocument();
-        document.Load(fileName);
-        InterpretNodes();
+        _document = new XmlDocument();
+        _document.Load(fileName);
     }
 
+    public void Run()
+    {
+        InterpretNodes();    
+    }
+    
     private void InterpretNodes()
     {
-        foreach (XmlNode rootNode in document.ChildNodes)
+        foreach (XmlNode rootNode in _document.ChildNodes)
         {
             if (rootNode.Name != "Program") continue;
 

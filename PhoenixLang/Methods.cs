@@ -7,6 +7,6 @@ public static class Methods
 {
     public static void phoenix_OutputConsole(XmlNode methodNode)
     {
-        Console.WriteLine(getAttributeValue(methodNode, "text"));
+        var textType = getAttributeValue(methodNode, "text_type");
     }
 }

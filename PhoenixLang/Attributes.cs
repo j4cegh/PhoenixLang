@@ -2,8 +2,9 @@
 
 namespace PhoenixLang;
 
-public class Attributes
+public static class Attributes
 {
+    // ReSharper disable once InconsistentNaming
     public static string? getAttributeValue(XmlNode node, string attributeName)
     {
         var attributeValue = node.Attributes?[attributeName]?.Value;
