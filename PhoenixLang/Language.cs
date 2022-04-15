@@ -4,15 +4,18 @@ using static PhoenixLang.Methods;
 namespace PhoenixLang;
 public class Language
 {
-    private XmlDocument _document;
+    private readonly XmlDocument _document;
+    public static string FileName = "";
     public Language(string fileName)
     {
+        FileName = fileName;
         _document = new XmlDocument();
         _document.Load(fileName);
     }
 
     public void Run()
     {
+        Variables.SetVariable("poop", "string", "VARIABLES WORK!");
         InterpretNodes();    
     }
     

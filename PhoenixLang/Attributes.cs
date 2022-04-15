@@ -3,11 +3,16 @@
 namespace PhoenixLang;
 
 public static class Attributes
-{
-    // ReSharper disable once InconsistentNaming
-    public static string? getAttributeValue(XmlNode node, string attributeName)
+{ 
+    public static string? GetAttributeValue(XmlNode node, string attributeName)
     {
         var attributeValue = node.Attributes?[attributeName]?.Value;
         return attributeValue;
+    }
+
+    public static void AttributeNullLog(string attributeName)
+    {
+        Exception.ThrowException($"The attribute {attributeName} is null.", Language.FileName);
+        Environment.Exit(1);
     }
 }
