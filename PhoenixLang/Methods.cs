@@ -42,7 +42,9 @@ public static class Methods
 
 
             default:
-                throw new ArgumentOutOfRangeException();
+            {
+                break;
+            }
         }
     }
 }

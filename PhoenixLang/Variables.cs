@@ -9,26 +9,24 @@ public static class Variables
     public static string? Replace(string? varString)
     {
         var finalValue = varString;
-        try
-        {
-            if (finalValue != null)
-            {
-                var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
 
-                foreach (Match match in matches)
-                {
-                    var variableName = match.Value[1..^1];
-                    var variableValue = GetVariable(variableName)?.Value;
-                    finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
-                }
+        if (finalValue != null)
+        {
+            var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
+            foreach (Match match in matches)
+            {
+                var variableName = match.Value[1..^1];
+                var variableValue = GetVariable(variableName)?.Value;
+                finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
             }
         }
-        catch
+        else
         {
-            return finalValue;
+            return varString;
         }
 
-        return finalValue;
+
+        return varString;
     }
 
     public static VariableProps? GetVariable(string variableName)
