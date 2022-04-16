@@ -37,6 +37,7 @@ public static class Methods
             
             case Type.Unidentified:
             {
+                Exception.ThrowException("Could not identify the type of the text.", Language.FileName);
                 break;
             }
 
