@@ -48,4 +48,9 @@ public static class Methods
             }
         }
     }
+
+    public static void phoenix_PauseConsole(XmlNode methodNode)
+    {
+        
+    }
 }

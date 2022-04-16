@@ -37,26 +37,15 @@ public static class Variables
         return variableProps;
     }
     
-    public static void SetVariable(string variableName, string variableType, string variableValue)
+    public static void SetVariable(VariableProps variable)
     {
-        if (GetVariable(variableName) == null)
+        if (GetVariable(variable.Name) == null)
         {
-            var variableProps = new VariableProps
-            {
-                Name = variableName,
-                Type = variableType,
-                Value = variableValue
-            };
-            VariablesList.Add(variableName, variableProps);
+            VariablesList.Add(variable.Name, variable);
         }
         else
         {
-            VariablesList[variableName] = new VariableProps
-            {
-                Name = variableName,
-                Type = variableType,
-                Value = variableValue
-            };
+            VariablesList[variable.Name] = variable;
         }
     }
 

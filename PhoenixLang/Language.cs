@@ -15,8 +15,20 @@ public class Language
 
     public void Run()
     {
-        Variables.SetVariable("poop", "string", "VARIABLES WORK!");
-        Variables.SetVariable("poop", "string", "VARIABLES WORK! BEST CASE SCENARIO'D!");
+        Variables.SetVariable(new VariableProps
+        {
+            Name = "poop",
+            Type = "string",
+            Value = "yooo"
+        });
+        
+        Variables.SetVariable(new VariableProps
+        {
+            Name = "poop2",
+            Type = "string",
+            Value = "yooo2"
+        });
+        
         InterpretNodes();    
     }
     
