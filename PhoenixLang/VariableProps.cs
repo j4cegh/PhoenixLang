@@ -1,6 +1,6 @@
 ﻿namespace PhoenixLang;
 
-public struct Variable
+public struct VariableProps
 {
     public string Name;
     public string Type;

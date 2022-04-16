@@ -4,7 +4,7 @@ namespace PhoenixLang;
 
 public static class Variables
 {
-    public static List<Variable> VariablesList = new(); 
+    public static Dictionary<string, VariableProps> VariablesList = new(); 
     
     public static string? Replace(string? varString)
     {
@@ -17,7 +17,7 @@ public static class Variables
 
                 foreach (Match match in matches)
                 {
-                    var variableName = match.Value.Replace("[", "").Replace("]", "");
+                    var variableName = match.Value[1..^1];
                     var variableValue = GetVariable(variableName)?.Value;
                     finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
                 }
@@ -31,27 +31,36 @@ public static class Variables
         return finalValue;
     }
 
-    public static Variable? GetVariable(string variableName)
+    public static VariableProps? GetVariable(string variableName)
     {
-        foreach (var entry in VariablesList)
-        {
-            if (entry.Name == variableName)
-            {
-                return entry;
-            }
-        }
-
-        return null;
+        if (!VariablesList.TryGetValue(variableName, out var variableProps)) return null;
+        
+        variableProps.Name = variableName;
+        return variableProps;
     }
-
+    
     public static void SetVariable(string variableName, string variableType, string variableValue)
     {
-        var variable = new Variable
+        if (GetVariable(variableName) == null)
         {
-            Name = variableName,
-            Type = variableType,
-            Value = variableValue
-        };
-        VariablesList.Add(variable);
+            var variableProps = new VariableProps
+            {
+                Name = variableName,
+                Type = variableType,
+                Value = variableValue
+            };
+            VariablesList.Add(variableName, variableProps);
+        }
+        else
+        {
+            VariablesList[variableName] = new VariableProps
+            {
+                Name = variableName,
+                Type = variableType,
+                Value = variableValue
+            };
+        }
     }
+
+    
 }
