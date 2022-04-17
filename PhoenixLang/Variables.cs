@@ -10,23 +10,16 @@ public static class Variables
     {
         var finalValue = varString;
 
-        if (finalValue != null)
+        
+        var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
+        foreach (Match match in matches)
         {
-            var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
-            foreach (Match match in matches)
-            {
-                var variableName = match.Value[1..^1];
-                var variableValue = GetVariable(variableName)?.Value;
-                finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
-            }
+            var variableName = match.Value[1..^1];
+            var variableValue = GetVariable(variableName)?.Value;
+            finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
         }
-        else
-        {
-            return varString;
-        }
-
-
-        return varString;
+        
+        return finalValue;
     }
 
     public static VariableProps? GetVariable(string variableName)
