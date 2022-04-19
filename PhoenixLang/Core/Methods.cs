@@ -1,8 +1,8 @@
 ﻿using System.Xml;
-using static PhoenixLang.Attributes;
-using static PhoenixLang.Types;
+using static PhoenixLang.Core.Attributes;
+using static PhoenixLang.Core.Types;
 
-namespace PhoenixLang;
+namespace PhoenixLang.Core;
 
 public static class Methods
 {
@@ -37,7 +37,7 @@ public static class Methods
             
             case Type.Unidentified:
             {
-                Exception.ThrowException("Could not identify the type of the text.", Language.FileName);
+                Exception.ThrowException("Could not identify the type of the text.");
                 break;
             }
 

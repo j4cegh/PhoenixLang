@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace PhoenixLang;
+namespace PhoenixLang.Core;
 
 public static class Variables
 {

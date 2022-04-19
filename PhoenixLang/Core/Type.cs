@@ -1,4 +1,4 @@
-﻿namespace PhoenixLang;
+﻿namespace PhoenixLang.Core;
 
 public enum Type
 {

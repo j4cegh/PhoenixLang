@@ -1,14 +1,17 @@
 ﻿using System.Xml;
-using static PhoenixLang.Methods;
+using PhoenixLang.Core;
+using static PhoenixLang.Core.Methods;
+using Type = PhoenixLang.Core.Type;
 
 namespace PhoenixLang;
 public class Language
 {
     private readonly XmlDocument _document;
-    public static string FileName = "";
+    private static string _fileName = "";
+    
     public Language(string fileName)
     {
-        FileName = fileName;
+        _fileName = fileName;
         _document = new XmlDocument();
         _document.Load(fileName);
     }

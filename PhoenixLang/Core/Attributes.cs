@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace PhoenixLang;
+namespace PhoenixLang.Core;
 
 public static class Attributes
 { 
@@ -12,7 +12,7 @@ public static class Attributes
 
     public static void AttributeNullLog(string attributeName)
     {
-        Exception.ThrowException($"The attribute {attributeName} is null.", Language.FileName);
+        Exception.ThrowException($"The attribute {attributeName} is null.");
         Environment.Exit(1);
     }
 }

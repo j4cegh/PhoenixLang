@@ -1,4 +1,4 @@
-﻿namespace PhoenixLang;
+﻿namespace PhoenixLang.Core;
 
 public static class Types
 {
