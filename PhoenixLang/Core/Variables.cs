@@ -6,7 +6,7 @@ public static class Variables
 {
     public static Dictionary<string, VariableProps> VariablesList = new(); 
     
-    public static string? Replace(string? varString)
+    public static string Replace(string? varString)
     {
         var finalValue = varString;
 

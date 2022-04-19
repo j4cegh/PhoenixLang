@@ -3,6 +3,6 @@
 public struct VariableProps
 {
     public string Name;
-    public string Type;
+    public Type Type;
     public string Value;
 }

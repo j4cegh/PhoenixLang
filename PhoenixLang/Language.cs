@@ -18,14 +18,14 @@ public class Language
         Variables.SetVariable(new VariableProps
         {
             Name = "poop",
-            Type = "string",
+            Type = Type.String,
             Value = "yooo"
         });
         
         Variables.SetVariable(new VariableProps
         {
             Name = "poop2",
-            Type = "string",
+            Type = Type.String,
             Value = "yooo2"
         });
         
