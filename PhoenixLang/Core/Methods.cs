@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Diagnostics;
+using System.Xml;
 using static PhoenixLang.Core.Attributes;
 using static PhoenixLang.Core.Typing;
 
@@ -29,28 +30,61 @@ public static class Methods
                 break;
             }
 
+            case Type.Number:
+            {
+                if (double.TryParse(textRaw, out var final))
+                {
+                    Console.WriteLine(final);
+                }
+                else
+                {
+                    Console.WriteLine(0);
+                }
+                break;
+            }
+            
+            case Type.FNumber:
+            {
+                if (double.TryParse(Variables.Replace(textRaw), out var final))
+                {
+                    Console.WriteLine(final);
+                }
+                else
+                {
+                    Console.WriteLine(0);
+                }
+                break;
+            }
+
             case Type.NotFound:
             {
                 AttributeNullLog("text_type");
                 break;
             }
-            
+
             case Type.Unidentified:
+            default:
             {
                 Exception.ThrowException("Could not identify the type of the text.");
                 break;
             }
-
-
-            default:
-            {
-                break;
-            }
+            
         }
     }
 
-    public static void phoenix_PauseConsole(XmlNode methodNode)
+    public static void phoenix_ReadConsole(XmlNode methodNode)
     {
+        var output = Console.ReadLine()!;
+        var toVar = GetAttributeValue(methodNode, "to");
         
+        if (toVar != null)
+        {
+            Variables.SetVariable(new VariableProps
+            {
+                Name = toVar,
+                Type = Type.String,
+                Value = output,
+            });
+        }
     }
 }

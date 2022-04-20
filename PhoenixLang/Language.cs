@@ -73,7 +73,12 @@ public class Language
             {
                 phoenix_OutputConsole(node);
                 break;
-            }            
+            }
+            case "ReadConsole":
+            {
+                phoenix_ReadConsole(node);
+                break;
+            }
         }
         
     }

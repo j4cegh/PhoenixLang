@@ -6,6 +6,10 @@ public enum Type
     FString,
     // Normal string
     String,
+    // Format number
+    FNumber,
+    // Number
+    Number,
     // Unidentified
     Unidentified,
     // Null (attribute not found)
