@@ -1,5 +1,5 @@
-﻿using System.Xml;
-using PhoenixLang;
+﻿using PhoenixLang;
 
-var language = new Language(/*Environment.GetCommandLineArgs()[1]*/ "Test.xml");
+var fileLocation = Environment.GetCommandLineArgs()[1];
+var language = new Language(fileLocation);
 language.Run();
