@@ -2,8 +2,12 @@
 
 public enum Type
 {
-    Unidentified,
-    NotFound,
+    // Format string
+    FString,
+    // Normal string
     String,
-    StringL
+    // Unidentified
+    Unidentified,
+    // Null (attribute not found)
+    NotFound
 }

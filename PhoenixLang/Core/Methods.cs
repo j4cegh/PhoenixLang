@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 using static PhoenixLang.Core.Attributes;
-using static PhoenixLang.Core.Types;
+using static PhoenixLang.Core.Typing;
 
 namespace PhoenixLang.Core;
 
@@ -17,13 +17,13 @@ public static class Methods
             
         switch (textType)
         {
-            case Type.StringL:
+            case Type.String:
             {
                 Console.WriteLine(textRaw);
                 break;
             }
 
-            case Type.String:
+            case Type.FString:
             {
                 Console.WriteLine(Variables.Replace(textRaw));
                 break;

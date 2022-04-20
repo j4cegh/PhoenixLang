@@ -4,7 +4,6 @@ namespace PhoenixLang.Core;
 
 public static class MathEngine
 {
-    
     public static T Evaluate<T>(string mathExpression)
     {
         try
