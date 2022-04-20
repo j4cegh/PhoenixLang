@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Xml;
+using PhoenixLang.Math;
 using static PhoenixLang.Core.Attributes;
 using static PhoenixLang.Core.Typing;
 
@@ -32,27 +33,13 @@ public static class Methods
 
             case Type.Number:
             {
-                if (double.TryParse(textRaw, out var final))
-                {
-                    Console.WriteLine(final);
-                }
-                else
-                {
-                    Console.WriteLine(0);
-                }
+                Console.WriteLine(MathEngine.Evaluate<double>(textRaw));
                 break;
             }
             
             case Type.FNumber:
             {
-                if (double.TryParse(Variables.Replace(textRaw), out var final))
-                {
-                    Console.WriteLine(final);
-                }
-                else
-                {
-                    Console.WriteLine(0);
-                }
+                Console.WriteLine(MathEngine.Evaluate<double>(Variables.Replace(textRaw)));
                 break;
             }
 

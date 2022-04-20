@@ -4,7 +4,7 @@ public enum Type
 {
     // Format string
     FString,
-    // Normal string
+    // String
     String,
     // Format number
     FNumber,

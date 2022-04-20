@@ -37,16 +37,13 @@ public class Language
     
     private void InterpretNodes()
     {
-        foreach (XmlNode rootNode in _document.ChildNodes)
+        if (_document.DocumentElement is not {Name: "Program"}) return;
+        
+        foreach (XmlNode programNode in _document.DocumentElement.ChildNodes)
         {
-            if (rootNode.Name != "Program") continue;
-
-            foreach (XmlNode programNode in rootNode.ChildNodes)
+            if (programNode.Name == "Main")
             {
-                if (programNode.Name == "Main")
-                {
-                    RunMainNode(programNode);
-                }
+                RunMainNode(programNode);
             }
         }
     }
@@ -60,12 +57,12 @@ public class Language
         }
     }
 
-    private void RunStatements(XmlNode node)
+    private static void RunStatements(XmlNode node)
     {
         
     }
     
-    private void RunMethods(XmlNode node)
+    private static void RunMethods(XmlNode node)
     {
         switch (node.Name)
         {
