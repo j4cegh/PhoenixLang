@@ -1,5 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
 using System.Xml;
+using Pastel;
 using PhoenixLang.Math;
 using static PhoenixLang.Core.Attributes;
 using static PhoenixLang.Core.Typing;

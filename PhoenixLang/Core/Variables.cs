@@ -9,7 +9,6 @@ public static class Variables
     public static string Replace(string? varString)
     {
         var finalValue = varString;
-
         
         var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
         foreach (Match match in matches)
@@ -18,7 +17,7 @@ public static class Variables
             var variableValue = GetVariable(variableName)?.Value;
             finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
         }
-        
+
         return finalValue;
     }
 

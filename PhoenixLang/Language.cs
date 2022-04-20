@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Globalization;
+using System.Xml;
 using PhoenixLang.Core;
 using static PhoenixLang.Core.Methods;
 using Type = PhoenixLang.Core.Type;
@@ -15,23 +16,10 @@ public class Language
         _document = new XmlDocument();
         _document.Load(fileName);
     }
-
+    
     public void Run()
     {
-        Variables.SetVariable(new VariableProps
-        {
-            Name = "poop",
-            Type = Type.String,
-            Value = "yooo"
-        });
-        
-        Variables.SetVariable(new VariableProps
-        {
-            Name = "poop2",
-            Type = Type.String,
-            Value = "yooo2"
-        });
-        
+        SetLanguageConstants();
         InterpretNodes();    
     }
     
@@ -48,7 +36,7 @@ public class Language
         }
     }
 
-    private void RunMainNode(XmlNode mainNode)
+    private static void RunMainNode(XmlNode mainNode)
     {
         foreach (XmlNode node in mainNode.ChildNodes)
         {
@@ -78,5 +66,15 @@ public class Language
             }
         }
         
+    }
+
+    private static void SetLanguageConstants()
+    {
+        Variables.SetVariable(new VariableProps
+        {
+            Name = "__pi__",
+            Type = Type.Number,
+            Value = System.Math.PI.ToString(CultureInfo.InvariantCulture)
+        });
     }
 }
