@@ -50,11 +50,15 @@ public static class Statements
             Variables.SetVariable(new VariableProps
             {
                 Name = iter!,
-                Type = Type.Number,
+                Type = Type.String,
                 Value = i.ToString()
             });
             
-            
+            foreach (XmlNode node in statementNode.ChildNodes)
+            {
+                Language.RunStatements(node);
+                Language.RunMethods(node);
+            }
         }
         
         

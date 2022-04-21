@@ -79,6 +79,7 @@ public static class Methods
             default:
             {
                 Exception.ThrowException("Could not identify the type of the text.");
+                Environment.Exit(1);
                 break;
             }
             

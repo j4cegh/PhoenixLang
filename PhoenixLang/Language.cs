@@ -46,7 +46,7 @@ public class Language
         }
     }
 
-    private static void RunStatements(XmlNode node)
+    public static void RunStatements(XmlNode node)
     {
         switch (node.Name)
         {
@@ -63,7 +63,7 @@ public class Language
         }
     }
     
-    private static void RunMethods(XmlNode node)
+    public static void RunMethods(XmlNode node)
     {
         switch (node.Name)
         {
