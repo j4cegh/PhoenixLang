@@ -8,8 +8,10 @@ public static class Typing
         {
             "string" => Type.String,
             "fstring" => Type.FString,
+            
             "number" => Type.Number,
             "fnumber" => Type.FNumber,
+            
             null => Type.NotFound,
             _ => Type.Unidentified
         };

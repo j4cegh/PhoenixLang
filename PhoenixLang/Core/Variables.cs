@@ -10,15 +10,15 @@ public static class Variables
     {
         var finalValue = varString;
         
-        var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
+        var matches = Regex.Matches(finalValue!, @"\[[^\]]*\]");
         foreach (Match match in matches)
         {
             var variableName = match.Value[1..^1];
             var variableValue = GetVariable(variableName)?.Value;
-            finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
+            finalValue = finalValue!.Replace("[" + variableName + "]", variableValue);
         }
 
-        return finalValue;
+        return finalValue!;
     }
 
     public static VariableProps? GetVariable(string variableName)
@@ -40,6 +40,4 @@ public static class Variables
             VariablesList[variable.Name] = variable;
         }
     }
-
-    
 }

@@ -2,16 +2,16 @@
 
 public enum Type
 {
-    // Format string
+    /// Format string
     FString,
-    // String
+    /// String
     String,
-    // Format number
+    /// Format number
     FNumber,
-    // Number
+    /// Number
     Number,
-    // Unidentified
+    /// Unidentified
     Unidentified,
-    // Null (attribute not found)
+    /// Null (attribute not found)
     NotFound
 }

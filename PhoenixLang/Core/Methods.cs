@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Globalization;
 using System.Xml;
 using Pastel;
 using PhoenixLang.Math;
 using static PhoenixLang.Core.Attributes;
 using static PhoenixLang.Core.Typing;
+using static PhoenixLang.Core.Statements;
 
 namespace PhoenixLang.Core;
 
@@ -36,13 +36,36 @@ public static class Methods
 
             case Type.Number:
             {
-                Console.WriteLine(MathEngine.Evaluate<double>(textRaw));
+                if (Defined.GetValueOrDefault("numColor") != "true")
+                {
+                    Console.WriteLine(MathEngine.EvaluateDouble(textRaw));
+                }
+                else
+                {
+                    Console.WriteLine(MathEngine.EvaluateDouble(textRaw)
+                        .ToString(CultureInfo.InvariantCulture)
+                        .Pastel(Color.Green)
+                    );
+                }
                 break;
             }
             
             case Type.FNumber:
             {
-                Console.WriteLine(MathEngine.Evaluate<double>(Variables.Replace(textRaw)));
+                if (Defined.GetValueOrDefault("numColor") != "true")
+                {
+                    Console.WriteLine(MathEngine.EvaluateDouble(
+                        Variables.Replace(textRaw))
+                    );
+                }
+                else
+                {
+                    Console.WriteLine(MathEngine.EvaluateDouble(
+                        Variables.Replace(textRaw))
+                        .ToString(CultureInfo.InvariantCulture)
+                        .Pastel(Color.Green)
+                    );
+                }
                 break;
             }
 
@@ -65,8 +88,10 @@ public static class Methods
     public static void phoenix_ReadConsole(XmlNode methodNode)
     {
         var output = Console.ReadLine()!;
-        var toVar = GetAttributeValue(methodNode, "to");
-        
+        var toVar = GetAttributeValue(methodNode, "to") ?? 
+                    GetAttributeValue(methodNode, "pipe") ?? 
+                    GetAttributeValue(methodNode, "pipeTo");
+
         if (toVar != null)
         {
             Variables.SetVariable(new VariableProps

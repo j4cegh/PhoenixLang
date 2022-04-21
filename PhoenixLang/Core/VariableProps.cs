@@ -1,4 +1,5 @@
-﻿namespace PhoenixLang.Core;
+﻿
+namespace PhoenixLang.Core;
 
 public struct VariableProps
 {

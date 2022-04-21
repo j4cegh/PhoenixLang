@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Xml;
 using PhoenixLang.Core;
+using static PhoenixLang.Core.Statements;
 using static PhoenixLang.Core.Methods;
 using Type = PhoenixLang.Core.Type;
 
@@ -16,11 +17,11 @@ public class Language
         _document = new XmlDocument();
         _document.Load(fileName);
     }
-    
+
     public void Run()
     {
         SetLanguageConstants();
-        InterpretNodes();    
+        InterpretNodes();
     }
     
     private void InterpretNodes()
@@ -47,7 +48,19 @@ public class Language
 
     private static void RunStatements(XmlNode node)
     {
-        
+        switch (node.Name)
+        {
+            case "Def":
+            {
+                phoenix_Def(node);
+                break;
+            }
+            case "For":
+            {
+                phoenix_For(node);
+                break;
+            }
+        }
     }
     
     private static void RunMethods(XmlNode node)
@@ -75,6 +88,13 @@ public class Language
             Name = "__pi__",
             Type = Type.Number,
             Value = System.Math.PI.ToString(CultureInfo.InvariantCulture)
+        });
+        
+        Variables.SetVariable(new VariableProps
+        {
+            Name = "__posinf__",
+            Type = Type.Number,
+            Value = double.PositiveInfinity.ToString(CultureInfo.InvariantCulture)
         });
     }
 }
