@@ -96,5 +96,12 @@ public class Language
             Type = Type.Number,
             Value = double.PositiveInfinity.ToString(CultureInfo.InvariantCulture)
         });
+        
+        Variables.SetVariable(new VariableProps
+        {
+            Name = "__neginf__",
+            Type = Type.Number,
+            Value = double.NegativeInfinity.ToString(CultureInfo.InvariantCulture)
+        });
     }
 }

@@ -22,7 +22,7 @@ public static class MathEngine
         }
         catch (InvalidCastException e)
         {
-            return int.TryParse(expr.Evaluate().ToString(), out var final) ? final : default(double);
+            return double.TryParse(expr.Evaluate().ToString(), out var final) ? final : default(double);
         }
     }   
 }
