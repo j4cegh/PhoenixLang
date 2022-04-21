@@ -4,14 +4,14 @@ namespace PhoenixLang.Core;
 
 public static class Variables
 {
-    public static Dictionary<string, VariableProps> VariablesList = new(); 
+    private static readonly Dictionary<string, VariableProps> VariablesList = new(); 
     
     public static string Replace(string? varString)
     {
         varString ??= "";
         var finalValue = varString;
         
-        var matches = Regex.Matches(finalValue!, @"\[[^\]]*\]");
+        var matches = Regex.Matches(finalValue, @"\[[^\]]*\]");
         foreach (Match match in matches)
         {
             var variableName = match.Value[1..^1];
