@@ -8,6 +8,7 @@ public static class Variables
     
     public static string Replace(string? varString)
     {
+        varString ??= "";
         var finalValue = varString;
         
         var matches = Regex.Matches(finalValue!, @"\[[^\]]*\]");
@@ -15,10 +16,10 @@ public static class Variables
         {
             var variableName = match.Value[1..^1];
             var variableValue = GetVariable(variableName)?.Value;
-            finalValue = finalValue!.Replace("[" + variableName + "]", variableValue);
+            finalValue = finalValue.Replace("[" + variableName + "]", variableValue);
         }
 
-        return finalValue!;
+        return finalValue;
     }
 
     public static VariableProps? GetVariable(string variableName)

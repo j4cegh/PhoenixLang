@@ -6,7 +6,7 @@ namespace PhoenixLang.Core;
 
 public static class Statements
 {
-    public static Dictionary<string, string> Defined = new();
+    public static readonly Dictionary<string, string> Defined = new();
     public static void phoenix_Def(XmlNode statementNode)
     {
 

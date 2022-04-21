@@ -61,7 +61,7 @@ public static class Methods
                 else
                 {
                     Console.WriteLine(MathEngine.EvaluateDouble(
-                        Variables.Replace(textRaw))
+                            Variables.Replace(textRaw))
                         .ToString(CultureInfo.InvariantCulture)
                         .Pastel(Color.Green)
                     );
@@ -102,5 +102,10 @@ public static class Methods
                 Value = output,
             });
         }
+    }
+
+    public static void phoenix_OutputNewLine(XmlNode methodNode)
+    {
+        Console.WriteLine();
     }
 }
