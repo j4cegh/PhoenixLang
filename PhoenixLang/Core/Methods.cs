@@ -99,7 +99,7 @@ public static class Methods
             {
                 Name = toVar,
                 Type = Type.String,
-                Value = output,
+                Value = output
             });
         }
     }
