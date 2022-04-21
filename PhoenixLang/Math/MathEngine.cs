@@ -20,7 +20,7 @@ public static class MathEngine
         {
             return e.ParamName == "Infinity" ? double.MaxValue : default!;
         }
-        catch (InvalidCastException e)
+        catch (InvalidCastException)
         {
             return double.TryParse(expr.Evaluate().ToString(), out var final) ? final : default(double);
         }

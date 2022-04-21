@@ -9,18 +9,22 @@ public static class Statements
     public static Dictionary<string, string> Defined = new();
     public static void phoenix_Def(XmlNode statementNode)
     {
-        if (statementNode.Attributes!["name"] == null)
+
+        var name = statementNode.Attributes?["name"]?.Value;
+        var value = statementNode.Attributes?["value"]?.Value;
+        
+        if (name == null)
         {
             AttributeNullLog("name");
         }
 
-        if (statementNode.Attributes["value"] == null)
+        if (value == null)
         {
             AttributeNullLog("value");
         }
         
-        var name = statementNode.Attributes["name"]!.Value;
-        var value = statementNode.Attributes["value"]!.Value;
+        name ??= "";
+        value ??= "";
         
         if (!Defined.ContainsKey(name))
         {
@@ -44,12 +48,15 @@ public static class Statements
         if (iter == null) {
             AttributeNullLog("iter");
         }
+        
+        range ??= "";
+        iter ??= "";
 
         for (var i = 0; i < MathEngine.EvaluateDouble(range); i++)
         {
             Variables.SetVariable(new VariableProps
             {
-                Name = iter!,
+                Name = iter,
                 Type = Type.String,
                 Value = i.ToString()
             });
