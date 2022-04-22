@@ -12,6 +12,6 @@ public enum Type
     Number,
     /// Unidentified
     Unidentified,
-    /// Null (attribute not found)
+    /// Null (parameter not found)
     NotFound
 }

@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 using PhoenixLang.Math;
-using static PhoenixLang.Core.Attributes;
+using static PhoenixLang.Core.Parameters;
 
 namespace PhoenixLang.Core;
 
@@ -15,12 +15,12 @@ public static class Statements
         
         if (name == null)
         {
-            AttributeNullLog("name");
+            ParameterNullLog("name");
         }
 
         if (value == null)
         {
-            AttributeNullLog("value");
+            ParameterNullLog("value");
         }
         
         name ??= "";
@@ -38,15 +38,15 @@ public static class Statements
 
     public static void phoenix_For(XmlNode statementNode) 
     {
-        var range = GetAttributeValue(statementNode, "range");
-        var iter = GetAttributeValue(statementNode, "iter");
+        var range = GetParameterValue(statementNode, "range");
+        var iter = GetParameterValue(statementNode, "iter");
 
         if (range == null) {
-            AttributeNullLog("range");
+            ParameterNullLog("range");
         }
 
         if (iter == null) {
-            AttributeNullLog("iter");
+            ParameterNullLog("iter");
         }
         
         range ??= "";
