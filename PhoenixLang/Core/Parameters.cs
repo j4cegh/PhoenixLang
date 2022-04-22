@@ -7,7 +7,7 @@ public static class Parameters
     public static string? GetParameterValue(XmlNode node, string parameterName)
     {
         var parameterValue = node.Attributes?[parameterName]?.Value;
-        return parameterName;
+        return parameterValue;
     }
 
     public static void ParameterNullLog(string parameterName)
