@@ -11,7 +11,8 @@ namespace PhoenixLang.Core;
 
 public static class Methods
 {
-    public static void phoenix_OutputConsole(XmlNode methodNode)
+    [Method("OutputConsole")]
+    public static void OutputConsole(XmlNode methodNode)
     {
         var textType = InterpretType(GetParameterValue(methodNode, "text_type"));
         var textRaw = GetParameterValue(methodNode, "text");
@@ -85,8 +86,9 @@ public static class Methods
             
         }
     }
-
-    public static void phoenix_ReadConsole(XmlNode methodNode)
+    
+    [Method("ReadConsole")]
+    public static void ReadConsole(XmlNode methodNode)
     {
         var output = Console.ReadLine()!;
         var toVar = GetParameterValue(methodNode, "to") ?? 
@@ -103,8 +105,9 @@ public static class Methods
             });
         }
     }
-
-    public static void phoenix_OutputNewLine(XmlNode methodNode)
+    
+    [Method("OutputNewLine")]
+    public static void OutputNewLine(XmlNode methodNode)
     {
         Console.WriteLine();
     }

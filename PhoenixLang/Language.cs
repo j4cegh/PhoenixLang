@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Reflection;
 using System.Xml;
 using PhoenixLang.Core;
 using static PhoenixLang.Core.Statements;
@@ -65,25 +66,15 @@ public class Language
     
     public static void RunMethods(XmlNode node)
     {
-        switch (node.Name)
-        {
-            case "OutputConsole":
-            {
-                phoenix_OutputConsole(node);
-                break;
-            }
-            case "ReadConsole":
-            {
-                phoenix_ReadConsole(node);
-                break;
-            }
-            case "OutputNewLine":
-            {
-                phoenix_OutputNewLine(node);
-                break;
-            }
-        }
+        var methodInfo = typeof(Methods)
+            .GetMethods()
+            .Where(x => x.GetCustomAttributes(false).OfType<MethodAttribute>().Any())
+            .First(x => x.GetCustomAttributes(false).OfType<MethodAttribute>().First().MethodName == node.Name);
         
+        methodInfo.Invoke(typeof(Methods), new object?[]
+        {
+            node
+        });
     }
 
     private static void SetLanguageConstants()
