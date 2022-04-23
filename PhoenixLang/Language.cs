@@ -19,6 +19,8 @@ public class Language
         _document.Load(fileName);
     }
 
+    
+
     public void Run()
     {
         SetLanguageConstants();
@@ -49,32 +51,12 @@ public class Language
 
     public static void RunStatements(XmlNode node)
     {
-        switch (node.Name)
-        {
-            case "Def":
-            {
-                phoenix_Def(node);
-                break;
-            }
-            case "For":
-            {
-                phoenix_For(node);
-                break;
-            }
-        }
+        // TODO: rewrite            
     }
     
     public static void RunMethods(XmlNode node)
     {
-        var methodInfo = typeof(Methods)
-            .GetMethods()
-            .Where(x => x.GetCustomAttributes(false).OfType<MethodAttribute>().Any())
-            .First(x => x.GetCustomAttributes(false).OfType<MethodAttribute>().First().MethodName == node.Name);
-        
-        methodInfo.Invoke(typeof(Methods), new object?[]
-        {
-            node
-        });
+        // TODO: rewrite
     }
 
     private static void SetLanguageConstants()

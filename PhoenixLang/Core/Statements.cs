@@ -7,7 +7,9 @@ namespace PhoenixLang.Core;
 public static class Statements
 {
     public static readonly Dictionary<string, string> Defined = new();
-    public static void phoenix_Def(XmlNode statementNode)
+    
+    [Statement("Def")]
+    public static void Def(XmlNode statementNode)
     {
 
         var name = statementNode.Attributes?["name"]?.Value;
@@ -35,8 +37,9 @@ public static class Statements
             Defined[name] = value;
         }
     }
-
-    public static void phoenix_For(XmlNode statementNode) 
+    
+    [Statement("For")]
+    public static void For(XmlNode statementNode) 
     {
         var range = GetParameterValue(statementNode, "range");
         var iter = GetParameterValue(statementNode, "iter");
