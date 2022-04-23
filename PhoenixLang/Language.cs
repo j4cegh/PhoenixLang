@@ -6,6 +6,7 @@ using static PhoenixLang.Core.Methods;
 using Type = PhoenixLang.Core.Type;
 
 namespace PhoenixLang;
+
 public class Language
 {
     private readonly XmlDocument _document;
