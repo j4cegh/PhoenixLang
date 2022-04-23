@@ -11,6 +11,8 @@ namespace PhoenixLang.Core;
 
 public static class Methods
 {
+    public static Dictionary<string, Action<XmlNode>> MethodsDict = new();
+    
     [Method("OutputConsole")]
     public static void OutputConsole(XmlNode methodNode)
     {

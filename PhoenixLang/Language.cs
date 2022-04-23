@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Reflection;
 using System.Xml;
 using PhoenixLang.Core;
 using static PhoenixLang.Core.Statements;
@@ -19,10 +18,37 @@ public class Language
         _document.Load(fileName);
     }
 
+    private static void BuildStatementsDict()
+    {
+        var statementInfo = typeof(Statements).GetMethods()
+            .Where(x => x.GetCustomAttributes(false).OfType<StatementAttribute>().Any());
+        
+        foreach (var method in statementInfo)
+        {
+            Action<XmlNode> action = node => method.Invoke(null, new object[] {node});
+            MethodsDict.Add(method.Name, action);
+        }
+    }
+    private static void BuildMethodsDict()
+    {
+        var methodInfo = typeof(Methods).GetMethods()
+            .Where(x => x.GetCustomAttributes(false).OfType<MethodAttribute>().Any());
+        
+        foreach (var method in methodInfo)
+        {
+            Action<XmlNode> action = (node) => method.Invoke(null, new object[] {node});
+            MethodsDict.Add(method.Name, action);
+        }
+    }
+    private static void BuildDicts()
+    {
+        BuildStatementsDict();
+        BuildMethodsDict();
+    }
     
-
     public void Run()
     {
+        BuildDicts();
         SetLanguageConstants();
         InterpretNodes();
     }
@@ -51,12 +77,18 @@ public class Language
 
     public static void RunStatements(XmlNode node)
     {
-        // TODO: rewrite            
+        if (StatementsDict.TryGetValue(node.Name, out var action))
+        {
+            action(node);
+        } 
     }
     
     public static void RunMethods(XmlNode node)
     {
-        // TODO: rewrite
+        if (MethodsDict.TryGetValue(node.Name, out var action))
+        {
+            action(node);
+        }
     }
 
     private static void SetLanguageConstants()
