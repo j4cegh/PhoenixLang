@@ -18,15 +18,12 @@ public static class Statements
         var value = statementNode.Attributes?["value"]?.Value;
         
         if (name == null)
-        {
             ParameterNullLog("name");
-        }
-
-        if (value == null)
-        {
-            ParameterNullLog("value");
-        }
         
+
+        if (value == null) 
+            ParameterNullLog("value");
+
         name ??= "";
         value ??= "";
         

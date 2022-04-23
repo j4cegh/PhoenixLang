@@ -13,14 +13,14 @@ public static class Methods
 {
     // ReSharper disable UnusedMember.Global
     public static Dictionary<string, Action<XmlNode>> MethodsDict = new();
-
+    
     
     [Method("OutputConsole")]
     public static void OutputConsole(XmlNode methodNode)
     {
         var textType = InterpretType(GetParameterValue(methodNode, "text_type"));
         var textRaw = GetParameterValue(methodNode, "text");
-
+        
         if (textRaw == null)
             ParameterNullLog("text");
         
