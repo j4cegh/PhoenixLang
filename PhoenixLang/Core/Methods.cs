@@ -14,6 +14,7 @@ public static class Methods
     // ReSharper disable UnusedMember.Global
     public static Dictionary<string, Action<XmlNode>> MethodsDict = new();
 
+    
     [Method("OutputConsole")]
     public static void OutputConsole(XmlNode methodNode)
     {

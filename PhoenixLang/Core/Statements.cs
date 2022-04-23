@@ -10,6 +10,7 @@ public static class Statements
     public static readonly Dictionary<string, Action<XmlNode>> StatementsDict = new();
     public static readonly Dictionary<string, string> Defined = new();
     
+    
     [Statement("Def")]
     public static void Def(XmlNode statementNode)
     {
