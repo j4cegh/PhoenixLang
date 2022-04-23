@@ -25,8 +25,8 @@ public class Language
         
         foreach (var method in statementInfo)
         {
-            Action<XmlNode> action = node => method.Invoke(null, new object[] {node});
-            MethodsDict.Add(method.Name, action);
+            void Action(XmlNode node) => method.Invoke(null, new object[] {node});
+            MethodsDict.Add(method.Name, Action);
         }
     }
     private static void BuildMethodsDict()
@@ -36,10 +36,11 @@ public class Language
         
         foreach (var method in methodInfo)
         {
-            Action<XmlNode> action = (node) => method.Invoke(null, new object[] {node});
-            MethodsDict.Add(method.Name, action);
+            void Action(XmlNode node) => method.Invoke(null, new object[] {node});
+            MethodsDict.Add(method.Name, Action);
         }
     }
+    
     private static void BuildDicts()
     {
         BuildStatementsDict();
