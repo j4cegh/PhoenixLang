@@ -24,18 +24,19 @@ public static class Methods
         if (textRaw == null)
             ParameterNullLog("text");
         
+        textRaw ??= "";
             
         switch (textType)
         {
             case Type.String:
             {
-                Console.WriteLine(textRaw);
+                Console.WriteLine(textRaw.Replace("\\n", "\n"));
                 break;
             }
 
             case Type.FString:
             {
-                Console.WriteLine(Variables.Replace(textRaw));
+                Console.WriteLine(Variables.Replace(textRaw.Replace("\\n", "\n")));
                 break;
             }
 
