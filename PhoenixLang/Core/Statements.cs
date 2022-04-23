@@ -14,7 +14,6 @@ public static class Statements
     [Statement("Def")]
     public static void Def(XmlNode statementNode)
     {
-
         var name = statementNode.Attributes?["name"]?.Value;
         var value = statementNode.Attributes?["value"]?.Value;
         
@@ -73,7 +72,6 @@ public static class Statements
                 Language.RunMethods(node);
             }
         }
-        
         
     }
 }
