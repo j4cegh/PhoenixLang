@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Xml;
 using Pastel;
-using PhoenixLang.Math;
+using PhoenixLang.Core.Math;
 using static PhoenixLang.Core.Parameters;
 using static PhoenixLang.Core.Typing;
 using static PhoenixLang.Core.Statements;

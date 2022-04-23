@@ -1,6 +1,6 @@
 ﻿using NCalc;
 
-namespace PhoenixLang.Math;
+namespace PhoenixLang.Core.Math;
     
 public static class MathEngine
 {

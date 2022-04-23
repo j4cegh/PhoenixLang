@@ -1,5 +1,5 @@
 ﻿using System.Xml;
-using PhoenixLang.Math;
+using PhoenixLang.Core.Math;
 using static PhoenixLang.Core.Parameters;
 
 namespace PhoenixLang.Core;
