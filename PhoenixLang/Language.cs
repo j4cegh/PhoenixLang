@@ -99,7 +99,7 @@ public class Language
         {
             Name = "__pi__",
             Type = Type.Number,
-            Value = System.Math.PI.ToString(CultureInfo.InvariantCulture)
+            Value = Math.PI.ToString(CultureInfo.InvariantCulture)
         });
         
         Variables.SetVariable(new VariableProps
