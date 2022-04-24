@@ -18,11 +18,11 @@ public static class MathEngine
         }
         catch (ArgumentException e)
         {
-            return e.ParamName == "Infinity" ? double.MaxValue : default!;
+            return e.ParamName == "Infinity" ? double.MaxValue : 0;
         }
         catch (InvalidCastException)
         {
-            return double.TryParse(expr.Evaluate().ToString(), out var final) ? final : default(double);
+            return double.TryParse(expr.Evaluate().ToString(), out var final) ? final : 0;
         }
     }   
 }
