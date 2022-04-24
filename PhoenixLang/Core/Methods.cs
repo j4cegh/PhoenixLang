@@ -14,7 +14,6 @@ public static class Methods
     // ReSharper disable UnusedMember.Global
     public static Dictionary<string, Action<XmlNode>> MethodsDict = new();
     
-    
     [Method("OutputConsole")]
     public static void OutputConsole(XmlNode methodNode)
     {
@@ -30,13 +29,13 @@ public static class Methods
         {
             case Type.String:
             {
-                Console.WriteLine(textRaw.Replace("\\n", "\n"));
+                Console.WriteLine(textRaw.Replace(@"\n", "\n"));
                 break;
             }
 
             case Type.FString:
             {
-                Console.WriteLine(Variables.Replace(textRaw.Replace("\\n", "\n")));
+                Console.WriteLine(Variables.Replace(textRaw.Replace(@"\n", "\n")));
                 break;
             }
 
@@ -108,6 +107,7 @@ public static class Methods
                 Type = Type.String,
                 Value = output
             });
+            
         }
     }
     
