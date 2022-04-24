@@ -94,11 +94,12 @@ public static class Methods
     [Method("ReadConsole")]
     public static void ReadConsole(XmlNode methodNode)
     {
-        var output = Console.ReadLine()!;
+        var output = Console.ReadLine();
         var toVar = GetParameterValue(methodNode, "to") ?? 
                     GetParameterValue(methodNode, "pipe") ?? 
                     GetParameterValue(methodNode, "pipeTo");
-
+        output ??= "";
+        
         if (toVar != null)
         {
             Variables.SetVariable(new VariableProps
